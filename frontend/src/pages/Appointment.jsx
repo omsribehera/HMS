@@ -1,16 +1,17 @@
-/* eslint-disable no-unused-vars */
-import React from 'react'
-import AppointmentForm from '../components/AppointmentForm'
-import Hero from '../components/Hero'
+import React from "react";
+import Hero from "../components/Hero";
+import AppointmentForm from "../components/AppointmentForm";
 
 const Appointment = () => {
   return (
     <>
-      <Hero title={"Schedule Ypur Appointment | Medical Medplus"}
-      imageUrl={"/signin.png"}/>
-      <AppointmentForm />
+      <Hero
+        title={"Schedule Your Appointment | ZeeCare Medical Institute"}
+        imageUrl={"/signin.png"}
+      />
+      <AppointmentForm/>
     </>
-  )
-}
+  );
+};
 
-export default Appointment
+export default Appointment;
