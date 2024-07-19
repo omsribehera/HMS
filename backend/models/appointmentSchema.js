@@ -27,8 +27,8 @@ import validator from "validator"
     nic: {
       type: String,
       required: true,
-      minLength: [10, "NIC Must be Conatin Atleast 10 Digits!"],
-      maxLength: [10, "NIC Must be Conatin Atleast 10 Digits!"],
+      minLength: [12, "NIC Must be Conatin Atleast 12 Digits!"],
+      maxLength: [12, "NIC Must be Conatin Atleast 12 Digits!"],
     },
     dob: {
       type: Date,
@@ -37,7 +37,7 @@ import validator from "validator"
     gender: {
       type: String,
       required: true,
-      enum: ["male","Female"],
+      enum: ["Male","Female"],
     },
     appointment_date:{
         type:String,

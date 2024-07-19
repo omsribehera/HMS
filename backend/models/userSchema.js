@@ -23,13 +23,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minLength: [10, "Phone Number Must be Conatin Atleast 10 Digits!"],
-    maxLength: [11, "Phone Number Must be Conatin Atleast 10 Digits!"],
+    maxLength: [11, "Phone Number Must be Conatin Atleast 11 Digits!"],
   },
   nic: {
     type: String,
     required: true,
-    minLength: [10, "NIC Must be Conatin Atleast 10 Digits!"],
-    maxLength: [10, "NIC Must be Conatin Atleast 10 Digits!"],
+    minLength: [12, "NIC Must be Conatin Atleast 12 Digits!"],
+    maxLength: [12, "NIC Must be Conatin Atleast 12 Digits!"],
   },
   dob: {
     type: Date,
@@ -38,11 +38,11 @@ const userSchema = new mongoose.Schema({
   gender: {
     type: String,
     required: true,
-    enum: ["male","Female"],
+    enum: ["Male", "Female"],
   },
   password: {
     type: String,
-    minLength: [5, "Password Must Contain at least 8 Characters"],
+    minLength: [5, "Password Must Contain at least 5 Characters"],
     required: true,
     select: false,
   },
@@ -69,9 +69,10 @@ userSchema.pre("save", async function (next) {
 userSchema.methods.comparePassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
-userSchema.methods.generateJsonWebToken=function(){
-    return jwt.sign({id:this._id},process.env.JWT_SECRET_KEY,
-        {expiresIn:process.env.JWT_EXPIRES})
-}
+userSchema.methods.generateJsonWebToken = function () {
+  return jwt.sign({ id: this._id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: process.env.JWT_EXPIRES,
+  });
+};
 
 export const User = mongoose.model("User", userSchema);
